@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ROV info</title>
+    <style>
+        #imageContainer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        img {
+            width: 190%;
+            height: auto;
+            margin-left: -300px;
+        }
+        #yearText {
+            font-size: 44px; /* Increase font size to 44px */
+            text-align: center;
+            color: red; /* Make the text red */
+        }
+        .input-group {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .year-input {
+            width: 50px; /* Ensure all input fields have the same width */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p id="yearText" style="display:none;">Year: 2016</p>
+        <div id="imageContainer"></div>
+
+        <h1>ROV info:</h1>
+        <div class="input-group">
+            <label for="year2016">Year 2016: </label>
+            <input type="number" id="year2016" class="year-input" min="0" max="5" value="0">
+        </div>
+        <div class="input-group">
+            <label for="year2017">Year 2017: </label>
+            <input type="number" id="year2017" class="year-input" min="0" max="5" value="0">
+        </div>
+        <div class="input-group">
+            <label for="year2018">Year 2018: </label>
+            <input type="number" id="year2018" class="year-input" min="0" max="5" value="0">
+        </div>
+        <div class="input-group">
+            <label for="year2019">Year 2019: </label>
+            <input type="number" id="year2019" class="year-input" min="0" max="5" value="0">
+        </div>
+        <div class="input-group">
+            <label for="year2020">Year 2020: </label>
+            <input type="number" id="year2020" class="year-input" min="0" max="5" value="0">
+        </div>
+        <div class="input-group">
+            <label for="year2021">Year 2021: </label>
+            <input type="number" id="year2021" class="year-input" min="0" max="5" value="0">
+        </div>
+        <div class="input-group">
+            <label for="year2022">Year 2022: </label>
+            <input type="number" id="year2022" class="year-input" min="0" max="5" value="0">
+        </div>
+        <div class="input-group">
+            <label for="year2023">Year 2023: </label>
+            <input type="number" id="year2023" class="year-input" min="0" max="5" value="0">
+        </div>
+        <div class="input-group">
+            <label for="year2024">Year 2024: </label>
+            <input type="number" id="year2024" class="year-input" min="0" max="5" value="0">
+        </div>
+        <div class="input-group">
+            <label for="year2025">Year 2025: </label>
+            <input type="number" id="year2025" class="year-input" min="0" max="5" value="0">
+        </div>
+        <button onclick="displayContent()">Show Image</button>
+    </div>
+
+    <script>
+        var currentYear = 2016;
+        var endYear = 2025;
+        var interval;
+
+        function displayContent() {
+            // Reset the current year and clear any existing intervals
+            currentYear = 2016;
+            clearInterval(interval);
+
+            var yearText = document.getElementById("yearText");
+            yearText.style.display = "block";
+
+            // Update the year text and start the interval
+            updateYear();
+        }
+
+        function updateYear() {
+            var yearText = document.getElementById("yearText");
+            yearText.textContent = "Year: " + currentYear;
+            displayImage(currentYear);
+            currentYear++;
+
+            if (currentYear <= endYear) {
+                interval = setTimeout(updateYear, 2000);
+            } else {
+                clearInterval(interval);
+            }
+        }
+
+        function displayImage(year) {
+            var imageNumber;
+            switch(year) {
+                case 2016:
+                    imageNumber = document.getElementById("year2016").value;
+                    break;
+                case 2017:
+                    imageNumber = document.getElementById("year2017").value;
+                    break;
+                case 2018:
+                    imageNumber = document.getElementById("year2018").value;
+                    break;
+                case 2019:
+                    imageNumber = document.getElementById("year2019").value;
+                    break;
+                case 2020:
+                    imageNumber = document.getElementById("year2020").value;
+                    break;
+                case 2021:
+                    imageNumber = document.getElementById("year2021").value;
+                    break;
+                case 2022:
+                    imageNumber = document.getElementById("year2022").value;
+                    break;
+                case 2023:
+                    imageNumber = document.getElementById("year2023").value;
+                    break;
+                case 2024:
+                    imageNumber = document.getElementById("year2024").value;
+                    break;
+                case 2025:
+                    imageNumber = document.getElementById("year2025").value;
+                    break;
+            }
+
+            var imagePaths = [
+                "C:/Users/Terra/OneDrive/Pictures/ROV/Watershed v0.png", //NNNNN
+                "C:/Users/Terra/OneDrive/Pictures/ROV/Watershed v1.png", //YNNNN
+                "C:/Users/Terra/OneDrive/Pictures/ROV/Watershed v2.png", //YYNNN
+                "C:/Users/Terra/OneDrive/Pictures/ROV/Watershed v3.png", //YYYNN
+                "C:/Users/Terra/OneDrive/Pictures/ROV/Watershed v4.png", //YYYYN
+                "C:/Users/Terra/OneDrive/Pictures/ROV/Watershed v5.png", //YYYYY
+            ];
+
+            var img = document.createElement("img");
+            img.src = imagePaths[imageNumber];
+            img.alt = "Watershed Image";
+
+            var imageContainer = document.getElementById("imageContainer");
+            imageContainer.innerHTML = "";
+            imageContainer.appendChild(img);
+        }
+    </script>
+</body>
+</html>
