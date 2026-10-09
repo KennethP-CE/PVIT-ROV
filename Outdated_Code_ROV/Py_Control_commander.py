@@ -11,7 +11,7 @@ import time
 import pygame
 from multiprocessing import Process 
 
-from modules.ps4.ps4 import PS4
+#from modules.ps4.ps4 import PS4
 # from controls.cam import Cam
 
 BRAIN_IP = "192.168.1.50"
@@ -154,7 +154,7 @@ def init_ps4():
 
 if __name__ == '__main__':
     # initialize ps4 controller
-    init_ps4()
+    #init_ps4()
 
     # # create main commander window
     # window = Gtk.ApplicationWindow()

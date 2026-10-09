@@ -1,5 +1,7 @@
 import pygame
 import time
+import socket
+import json
 
 def connectController():
     pygame.init()
@@ -16,6 +18,13 @@ def connectController():
             Xbox.init()
             print("Controller connected")
             break
+
+def connectSocket():
+    global pi
+    print("Connecting to pi")
+    pi = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    pi.connect(("192.168.50.2", 5000))
+    print("Connected to pi")
 
 def deadzone(axis):
     if abs(axis) < 0.1:
@@ -49,14 +58,23 @@ def collectInputs():
     }
     return input_dictionary
 
+def sendInputs(m):
+    message = m
+    json_message = json.dumps(message) + "\n"
+    data = json_message.encode("utf-8")
+    pi.send(data)
+    print("Sent: ", message)
+
 def finishProgram():
     pygame.quit()
+    pi.close()
 
 connectController()
+connectSocket()
 try:
     while True:
         inputs = collectInputs()
-        print(inputs)
+        sendInputs(inputs)
         time.sleep(0.05)
 except KeyboardInterrupt:
     finishProgram()
