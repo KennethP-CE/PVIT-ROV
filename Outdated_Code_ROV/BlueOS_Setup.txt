@@ -1,0 +1,13 @@
+BlueOS setup records
+Necessary materials: 1 raspberry pi, 1 navigator flight controller board, atleast 1 Deepwater Exploration Camera that connects to USB, a 5V power supply (or 5V phone charger), an ethernet cable, and a computer that takes ethernet (ethernet converter if not)
+https://blueos.cloud/docs/latest/usage/installation/ follow these instructions to install blueOS onto a microSD card.
+Use a 5V POWER SUPPLY OR PHONE CHARGER to power the raspberry pi 12 VOLTS WILL FRY THE PI IN 0.000001 MICROSECONDS. Also connect the pi to your computer with ethernet.
+Type the link: blueos-avahi.local and wait 2 minutes, yes it actually takes two minutes to load and you’ve done nothing wrong. Note: if it takes more than 5 minutes something is wrong.
+Ignore the setup wizard and navigate to autopilot firmware.
+Upload the latest stable Ardupilot submarine firmware: https://firmware.ardupilot.org/Sub/
+Restart the autopilot and navigate to Vehicle Setup. There click “load default parameters.” I forgot where that button is located so just navigate within Vehicle Setup until you find it.
+Now go to Video Streams (Note this will only work if you have a blueOS approved camera plugged into the raspberry pi via USB), and click “add stream” where one of the cameras pop up. Do this for every camera plugged into the ROV, but be careful because multiple cameras cannot share an IP address. The default is something.something.5600. For every camera after the first, just increase 5600 to 5601.
+Now, go to cockpit. Mostly ignore the setup instructions and tutorial. Go to “Edit interface on the left side of the screen. From there you can build the camera views. Mostly just trail and error the interface until it looks decent. If you want to change which camera the screen shows, click on the gear wheel that appears next to the video view and change the stream number.
+To run the ROV, click disarmed and use the slider to change the ROV to “armed.”
+Additional notes: You can only code in Lua within the blueOS interface. Search on google and use the ai overview to figure out how. Already made Lua scripts can be found in the “Useful Stuff” folder. Vehicle setup, do not bother trying to set pins to light functions. Just set them to script pins (in Vehicle Setup) and control them in Lua. For on/off signals to go to the linear actuator, use GPIO pins and control them in Lua. To activate scripts, use Script-assigned pins in Cockpit (they can be assigned in the joystick mapping area, just navigate until you find it).
+Call/text 310-357-1956 if you have any questions. Note, I usually don’t take calls but if you text me to call you I will.
