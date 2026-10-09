@@ -15,3 +15,9 @@ Programs for the PVIT ROV team.
 1. Wrote a python program that runs on the desk computer to send controller inputs to the Raspberry Pi.
 2. Wrote a python program that runs on the Raspberry Pi that collects controller inputs sent from the desk computer, sends those controller inputs to the Arduino, and streams the attached cameras.
 3. Wrote a C++ program that runs on the Arduino to convert controller inputs into pwm and digital signals.
+
+## Notes for Reading
+1. All programs are organized into convenient folders. The Old Code folder contains the programs we used my freshman and sophomore years.
+2. Outside the Old Code folder, all programs are written for the 2026-2027 year.
+3. Programs that contain "_Control_" in their title are used for controlling the ROV.
+4. Programs that contain "_Task_" in their title are used for completing desk tasks.
