@@ -1,0 +1,20 @@
+# === Python Clutter ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# === C++ and Compiler Clutter ===
+*.o
+*.obj
+*.out
+*.exe
+*.gch
+
+# === Embedded Engineering & IDE Clutter ===
+.vscode/
+.pio/
+.clangd/
+build/
+bin/
