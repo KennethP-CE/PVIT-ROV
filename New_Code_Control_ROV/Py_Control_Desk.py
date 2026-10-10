@@ -27,7 +27,7 @@ def connectSocket():
     print("Connected to pi")
 
 def deadzone(axis):
-    if abs(axis) < 0.1:
+    if abs(axis) < 0.15:
         return 0
     else:
         return axis
