@@ -60,7 +60,7 @@ def collectInputs():
 
 def sendInputs(m):
     message = m
-    json_message = json.dumps(message) + "\n"
+    json_message = json.dumps(message)
     data = json_message.encode("utf-8")
     pi.send(data)
     print("Sent: ", message)
