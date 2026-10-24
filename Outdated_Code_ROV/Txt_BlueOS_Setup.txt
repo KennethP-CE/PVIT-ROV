@@ -11,3 +11,5 @@ Now, go to cockpit. Mostly ignore the setup instructions and tutorial. Go to “
 To run the ROV, click disarmed and use the slider to change the ROV to “armed.”
 Additional notes: You can only code in Lua within the blueOS interface. Search on google and use the ai overview to figure out how. Already made Lua scripts can be found in the “Useful Stuff” folder. Vehicle setup, do not bother trying to set pins to light functions. Just set them to script pins (in Vehicle Setup) and control them in Lua. For on/off signals to go to the linear actuator, use GPIO pins and control them in Lua. To activate scripts, use Script-assigned pins in Cockpit (they can be assigned in the joystick mapping area, just navigate until you find it).
 Call/text 310-357-1956 if you have any questions. Note, I usually don’t take calls but if you text me to call you I will.
+Good Luck,
+-Kenneth John Preston III
