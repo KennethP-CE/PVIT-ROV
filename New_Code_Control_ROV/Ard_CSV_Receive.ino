@@ -34,7 +34,7 @@ void confirmReceipt(const char* line, size_t len) {
 
   int fields = 0;
   char* token = strtok(echo, ",");
-  while (token != NULL && fields < kMaxFields) {
+  while (token != NULL && fields < (int)kMaxFields) {
     (void)strtod(token, nullptr);  // validate: parses a leading number
     token = strtok(nullptr, ",");
     fields++;
