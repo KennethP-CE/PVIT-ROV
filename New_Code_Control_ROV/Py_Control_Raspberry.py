@@ -15,6 +15,9 @@ import time
 SERIAL_PORT = "/dev/ttyACM0"
 SERIAL_BAUD = 115200
 SOCKET_PORT = 5000
+# Interface the socket binds to. Must match the Pi's address that the desk
+# program sends to (see Py_Control_Desk.connectSocket).
+SOCKET_BIND_IP = "192.168.50.2"
 
 # Canonical column order for the CSV. Keep in sync with the sender,
 # Py_Control_Desk.collectInputs(), which builds the dictionary in this order.
@@ -35,10 +38,10 @@ receptor = None
 ser = None
 
 
-def connectSocket(port=SOCKET_PORT):
+def connectSocket(port=SOCKET_PORT, bind_ip=SOCKET_BIND_IP):
     global receptor
     receptor = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    receptor.bind(("0.0.0.0", port))
+    receptor.bind((bind_ip, port))
     receptor.settimeout(1)
     print("Socket established")
 
@@ -88,7 +91,7 @@ def dictToCSV(message, keys=CONTROL_KEYS):
         number = _to_number(message.get(key, 0))
         if not math.isfinite(number):
             number = 0
-        fields.append(f"{number:g}")
+        fields.append(str(number))
     return ",".join(fields)
 
 

@@ -23,7 +23,9 @@ void setup() {
   Serial.println("ARD_READY");
 }
 
-// Parse every numeric field in the line, then confirm receipt with a count.
+// Parse every numeric field in the line, then confirm receipt with a count
+// and the original line. `echo` is a copy used for parsing because strtok
+// inserts NUL bytes; `line` itself stays intact for the reply.
 void confirmReceipt(const char* line, size_t len) {
   char echo[kMaxLineLen];
   size_t copyLen = len < kMaxLineLen ? len : kMaxLineLen - 1;
@@ -41,7 +43,7 @@ void confirmReceipt(const char* line, size_t len) {
   Serial.print("CSV_RECV: n=");
   Serial.print(fields);
   Serial.print(" line=");
-  Serial.println(echo);
+  Serial.println(line);
 }
 
 void loop() {
